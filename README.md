@@ -51,17 +51,22 @@ This project transforms the 3D slider on New Nintendo 3DS systems into a brightn
 
    **For Arch Linux:**
    ```bash
-   # Install from AUR using your preferred AUR helper (e.g., yay or paru)
-   # Using yay:
+   # Install from the AUR
+   # Option 1: Using an AUR helper like yay
    yay -S devkitpro-pacman
    
-   # Or manually from AUR:
+   # Option 2: Manual installation from AUR
    git clone https://aur.archlinux.org/devkitpro-pacman.git
    cd devkitpro-pacman
    makepkg -si
    
-   # After installation, initialize and install 3DS dev tools
+   # After installation, install the 3DS development tools
    sudo dkp-pacman -S 3ds-dev
+   
+   # Set up environment variables (add to your .bashrc or .zshrc)
+   echo 'export DEVKITPRO=/opt/devkitpro' >> ~/.bashrc
+   echo 'export DEVKITARM=${DEVKITPRO}/devkitARM' >> ~/.bashrc
+   source ~/.bashrc
    ```
 
    **For Fedora:**
