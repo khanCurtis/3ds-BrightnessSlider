@@ -10,7 +10,10 @@ fn map_slider_to_brightness(slider: f32, min: u8, max: u8) -> u8 {
 }
 
 fn set_brightness(brightness: u8) -> u8 {
-    let safe_brightness = brightness.clamp(10, 100)
+    let safe_brightness = brightness.clamp(10, 100);
+
+    //Placeholder - need to use a ctru-rs function or make direct system call
+    safe_brightness
 }
 
 fn main() {
