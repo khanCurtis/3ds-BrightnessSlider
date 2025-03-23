@@ -3,6 +3,7 @@ use std::time::Duration;
 use ctru::prelude::*;
 use ctru::services::gfx::Screen;
 use ctru::services::hid::Hid;
+use ctru::service::gsp::Gsp;
 
 fn map_slider_to_brightness(slider: f32, min: u8, max: u8) -> u8 {
     let brightness = min as f32 + ((max - min) as f32 * slider);
@@ -10,10 +11,17 @@ fn map_slider_to_brightness(slider: f32, min: u8, max: u8) -> u8 {
 }
 
 fn set_brightness(brightness: u8) -> u8 {
-    let safe_brightness = brightness.clamp(10, 100);
+    //Convert from percentage to 3DS range
+    let safe_brightness = (brightness / 10).clamp(1, 10);
 
-    //Placeholder - need to use a ctru-rs function or make direct system call
-    safe_brightness
+    unsafe {
+        //Get GSP shared memory
+        let lcd_reg = (&*ctru::services::gsp::GspLcd::get()).as_ptr();
+
+        lcd_reg.add(0x240).write_volatile(safe_brightness as u32);
+    }
+
+    brightness
 }
 
 fn main() {
