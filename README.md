@@ -49,6 +49,16 @@ This project transforms the 3D slider on New Nintendo 3DS systems into a brightn
    sudo dkp-pacman -S 3ds-dev
    ```
 
+   **For Fedora:**
+   ```bash
+   # Download the Fedora RPM
+   wget https://github.com/devkitPro/pacman/releases/download/v6.0.1/devkitpro-pacman.rpm
+   # Install the package
+   sudo dnf install ./devkitpro-pacman.rpm
+   # Install the devkitPro tools
+   sudo dkp-pacman -S 3ds-dev
+   ```
+   
    **For Arch Linux:**
    ```bash
    # Add the devkitPro pacman repository
@@ -64,23 +74,13 @@ This project transforms the 3D slider on New Nintendo 3DS systems into a brightn
    sudo pacman -S 3ds-dev
    ```
 
-   **For Fedora:**
-   ```bash
-   # Download the Fedora RPM
-   wget https://github.com/devkitPro/pacman/releases/download/v6.0.1/devkitpro-pacman.rpm
-   # Install the package
-   sudo dnf install ./devkitpro-pacman.rpm
-   # Install the devkitPro tools
-   sudo dkp-pacman -S 3ds-dev
-   ```
-
-2. Install Rust and set up cross-compilation:
+1. Install Rust and set up cross-compilation:
    ```bash
    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
    cargo install cargo-3ds
    ```
 
-3. Add the 3DS target:
+2. Add the 3DS target:
    ```bash
    rustup target add armv6k-nintendo-3ds
    ```
