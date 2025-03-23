@@ -20,22 +20,76 @@ This project transforms the 3D slider on New Nintendo 3DS systems into a brightn
 - [devkitPro](https://devkitpro.org/) with devkitARM installed
 - Rust toolchain with rust-3ds environment
 
-Installation
-Setting Up Development Environment
+## Installation
 
-Install devkitPro with 3DS support:
-For Windows:
+### Setting Up Development Environment
 
-Use the installer from the devkitPro website
+1. Install devkitPro with 3DS support:
 
-For macOS:
-bash
+   **For Windows:**
+   - Use the installer from the [devkitPro website](https://devkitpro.org/wiki/Getting_Started)
+
+   **For macOS:**
+   ```bash
+   brew install devkitpro
+   sudo dkp-pacman -S 3ds-dev
+   ```
+
+   **For Debian/Debian-based:**
+   ```bash
+   wget https://github.com/devkitPro/pacman/releases/download/v6.0.1/devkitpro-pacman.deb
+   sudo dpkg -i devkitpro-pacman.deb
+   sudo dkp-pacman -S 3ds-dev
+   ```
+
+   **For Ubuntu/Ubuntu-based:**
+   ```bash
+   wget https://github.com/devkitPro/pacman/releases/download/v6.0.1/devkitpro-pacman.deb
+   sudo apt install ./devkitpro-pacman.deb
+   sudo dkp-pacman -S 3ds-dev
+   ```
+
+   **For Arch Linux:**
+   ```bash
+   # Add the devkitPro pacman repository
+   sudo curl -o /etc/pacman.d/devkitpro https://devkitpro.org/devkitpro-arch.conf
+   # Import the gpg key
+   sudo pacman-key --recv BC26F752D25B92CE272E0F44F7FD5492264BB9D0 --keyserver keyserver.ubuntu.com
+   sudo pacman-key --lsign BC26F752D25B92CE272E0F44F7FD5492264BB9D0
+   # Update pacman and install the devkitPro keyring
+   sudo pacman -Sy
+   sudo pacman -S devkitpro-keyring
+   # Update pacman again and install the required packages
+   sudo pacman -Sy
+   sudo pacman -S 3ds-dev
+   ```
+
+   **For Fedora:**
+   ```bash
+   # Download the Fedora RPM
+   wget https://github.com/devkitPro/pacman/releases/download/v6.0.1/devkitpro-pacman.rpm
+   # Install the package
+   sudo dnf install ./devkitpro-pacman.rpm
+   # Install the devkitPro tools
+   sudo dkp-pacman -S 3ds-dev
+   ```
+
+2. Install Rust and set up cross-compilation:
+   ```bash
+   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   cargo install cargo-3ds
+   ```
+
+3. Add the 3DS target:
+   ```bash
+   rustup target add armv6k-nintendo-3ds
+   ```
 
 ### Building the Project
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/khanCurtis/3DS-BrightnessSlider.git
+   git clone https://github.com/yourusername/3DS-BrightnessSlider.git
    cd 3DS-BrightnessSlider
    ```
 
