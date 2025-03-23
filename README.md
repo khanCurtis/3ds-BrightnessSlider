@@ -20,31 +20,16 @@ This project transforms the 3D slider on New Nintendo 3DS systems into a brightn
 - [devkitPro](https://devkitpro.org/) with devkitARM installed
 - Rust toolchain with rust-3ds environment
 
-## Installation
+Installation
+Setting Up Development Environment
 
-### Setting Up Development Environment
+Install devkitPro with 3DS support:
+For Windows:
 
-1. Install devkitPro with 3DS support:
-   ```bash
-   # For Windows, use the installer from devkitPro website
-   # For macOS
-   brew install devkitpro
-   # For Linux
-   wget https://github.com/devkitPro/pacman/releases/download/v6.0.1/devkitpro-pacman.deb
-   sudo dpkg -i devkitpro-pacman.deb
-   sudo dkp-pacman -S 3ds-dev
-   ```
+Use the installer from the devkitPro website
 
-2. Install Rust and set up cross-compilation:
-   ```bash
-   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-   cargo install cargo-3ds
-   ```
-
-3. Add the 3DS target:
-   ```bash
-   rustup target add armv6k-nintendo-3ds
-   ```
+For macOS:
+bash
 
 ### Building the Project
 
