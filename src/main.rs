@@ -25,7 +25,7 @@ fn main() {
 
     //Config
     const UPDATE_INTERVAL: u64 = 100; //Watches for slider pos every 100ms
-    const MIN_BRIGHTNESS: u8 = 10; //KEEP THIS AT 10!!!!!!!!!
+    const MIN_BRIGHTNESS: u8 = 10; 
     const MAX_BRIGHTNESS: u8 = 100;
 
     //State tracking
