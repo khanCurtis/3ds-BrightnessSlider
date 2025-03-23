@@ -49,6 +49,21 @@ This project transforms the 3D slider on New Nintendo 3DS systems into a brightn
    sudo dkp-pacman -S 3ds-dev
    ```
 
+   **For Arch Linux:**
+   ```bash
+   # Install from AUR using your preferred AUR helper (e.g., yay or paru)
+   # Using yay:
+   yay -S devkitpro-pacman
+   
+   # Or manually from AUR:
+   git clone https://aur.archlinux.org/devkitpro-pacman.git
+   cd devkitpro-pacman
+   makepkg -si
+   
+   # After installation, initialize and install 3DS dev tools
+   sudo dkp-pacman -S 3ds-dev
+   ```
+
    **For Fedora:**
    ```bash
    # Download the Fedora RPM
@@ -58,29 +73,14 @@ This project transforms the 3D slider on New Nintendo 3DS systems into a brightn
    # Install the devkitPro tools
    sudo dkp-pacman -S 3ds-dev
    ```
-   
-   **For Arch Linux:**
-   ```bash
-   # Add the devkitPro pacman repository
-   sudo curl -o /etc/pacman.d/devkitpro https://devkitpro.org/devkitpro-arch.conf
-   # Import the gpg key
-   sudo pacman-key --recv BC26F752D25B92CE272E0F44F7FD5492264BB9D0 --keyserver keyserver.ubuntu.com
-   sudo pacman-key --lsign BC26F752D25B92CE272E0F44F7FD5492264BB9D0
-   # Update pacman and install the devkitPro keyring
-   sudo pacman -Sy
-   sudo pacman -S devkitpro-keyring
-   # Update pacman again and install the required packages
-   sudo pacman -Sy
-   sudo pacman -S 3ds-dev
-   ```
 
-1. Install Rust and set up cross-compilation:
+2. Install Rust and set up cross-compilation:
    ```bash
    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
    cargo install cargo-3ds
    ```
 
-2. Add the 3DS target:
+3. Add the 3DS target:
    ```bash
    rustup target add armv6k-nintendo-3ds
    ```
@@ -131,9 +131,9 @@ The core functions:
 You can modify these constants in the source code:
 
 ```rust
-const UPDATE_INTERVAL: u64 = 100;  //Watches for slider pos every 100ms
-const MIN_BRIGHTNESS: u8 = 10;
-const MAX_BRIGHTNESS: u8 = 100;
+const UPDATE_INTERVAL: u64 = 100;  // How often to check slider (milliseconds)
+const MIN_BRIGHTNESS: u8 = 10;     // Minimum brightness percentage
+const MAX_BRIGHTNESS: u8 = 100;    // Maximum brightness percentage
 ```
 
 ## Contributing
